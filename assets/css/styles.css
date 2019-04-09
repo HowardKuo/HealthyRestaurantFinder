@@ -1,3 +1,16 @@
-.display-4 {
-    text-align: center;
+label {
+    padding: 5px;
+    margin: 0px 3px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.cuisineType {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 10px;
+    padding: 10px;
 }

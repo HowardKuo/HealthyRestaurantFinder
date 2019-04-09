@@ -1,4 +1,4 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,24 +7,47 @@
     <title>Restaurant Locater</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css">
     <script src="assets/javascript/js.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div id='container'>
-        <div class="jumbotron">
-            <h1 class="display-4">Hello, bun!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <nav class="navbar navbar-dark bg-primary border-bottom border-light">
+            <a class="navbar-brand" href="#">Restaurant Finder</a>
+            <form class="form-inline">
+                <input type="checkbox" name="gluten-free" value="gluten-free">
+                <label for="gluten-free">gluten-free</label>
+                <input type="checkbox" name="vegan" value="vegan">
+                <label for="vegan">vegan</label>
+                <input type="checkbox" name="vegetarian" value="vegetarian">
+                <label for="vegetarian">vegetarian</label>
+                <select id="cuisineType">
+                    <option value="default">Select a cuisine type</option>
+                    <option value="asian">Asian</option>
+                    <option value="french">French</option>
+                    <option value="fusion">Fusion</option>
+                    <option value="indian">Indian</option>
+                    <option value="mediterranean">Mediterranean</option>
+                    <option value="other">Other</option>
+                </select>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by Zipcode" aria-label="Search">
+                <button class="btn btn-info btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h1>1</h1>
+            </div>
+            <div class="col-md-4">
+                <h2>2</h2>
+            </div>
         </div>
-        
+
     </div>
 </body>
 
