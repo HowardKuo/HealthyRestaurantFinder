@@ -8,9 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css">
+<<<<<<< HEAD
 
+=======
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0&callback=initMap">
+    </script>
+    <script src="assets/javascript/js.js"></script>
+>>>>>>> 601db2b04f3d4724e6c47034c4e9e55dc2a78797
 </head>
 
 <body>
@@ -33,8 +40,9 @@
                     <option value="mediterranean">Mediterranean</option>
                     <option value="other">Other</option>
                 </select>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search by Zipcode" aria-label="Search">
-                <button class="btn btn-info btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <!--  Do we want numbers for the search parameter only?  or letters as well? -->
+                <input class="form-control mr-sm-2" id="input" type="number" placeholder="Search by Zipcode" aria-label="Search">
+                <button class="btn btn-info btn-outline-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
             </form>
         </nav>
 
@@ -45,7 +53,7 @@
                 <h2>2</h2>
             </div>
         </div>
-
+        
     </div>
 <script src="assets/javascript/js.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
