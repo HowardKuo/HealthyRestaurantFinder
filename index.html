@@ -8,15 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/styles.css">
-    <script src="assets/javascript/js.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div id='container'>
-        <nav class="navbar navbar-dark bg-primary border-bottom border-light">
+        <!-- <nav class="navbar navbar-dark bg-primary border-bottom border-light">
             <a class="navbar-brand" href="#">Restaurant Finder</a>
             <form class="form-inline">
                 <input type="checkbox" name="gluten-free" value="gluten-free">
@@ -34,21 +32,97 @@
                     <option value="mediterranean">Mediterranean</option>
                     <option value="other">Other</option>
                 </select>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search by Zipcode" aria-label="Search">
-                <button class="btn btn-info btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         Do we want numbers for the search parameter only?  or letters as well?
+                <input class="form-control mr-sm-2" id="input" type="number" placeholder="Search by Zipcode" aria-label="Search">
+                <button class="btn btn-info btn-outline-success my-2 my-sm-0" id="searchButton" type="submit">Search</button>
             </form>
         </nav>
 
         <div class="row">
-            <div class="col-md-8">
-                <h1>1</h1>
+            <div class="col-md-8" id="map">
             </div>
             <div class="col-md-4">
                 <h2>2</h2>
             </div>
+        </div> -->
+        <div class="jumbotron">
+            <h1 class="display-4">RESTAURANT LOCATOR</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p></p>
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+            <form>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by Zipcode" aria-label="Search">
+                <button class="btn btn-info btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+
+        <div class = "image-display">
+            <div class="row">
+                <!-- <div class="col-md-12">
+                <h1>1</h1>
+            </div> -->
+
+            <div class="col-sm-3">
+                <div class="thumbnail text-center">
+                    <!-- Place the anchor tag here to cover both your caption and image -->
+                    <a href="#" class="">
+                        <img src="assets/images/vegetarian.jpg" alt="..." class="">
+                        <div class="caption">
+                            <h4 class="">VEGETARIAN</h4>
+                        </div>
+                    </a>
+                    <!-- Anchor tag ends covering both image and caption -->
+                </div>
+            </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail text-center">
+                        <!-- Place the anchor tag here to cover both your caption and image -->
+                        <a href="#" class="">
+                            <img src="assets/images/vegetarian.jpg" alt="..." class="">
+                            <div class="caption">
+                                <h4 class="">VEGAN</h4>
+                            </div>
+                        </a>
+                        <!-- Anchor tag ends covering both image and caption -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail text-center">
+                        <!-- Place the anchor tag here to cover both your caption and image -->
+                        <a href="#" class="">
+                            <img src="assets/images/vegetarian.jpg" alt="..." class="">
+                            <div class="caption">
+                                <h4 class="">COMFORT</h4>
+                            </div>
+                        </a>
+                        <!-- Anchor tag ends covering both image and caption -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumbnail text-center">
+                        <!-- Place the anchor tag here to cover both your caption and image -->
+                        <a href="#" class="">
+                            <img src="assets/images/vegetarian.jpg" alt="..." class="">
+                            <div class="caption">
+                                <h4 class="">GLUTEN-FREE</h4>
+                            </div>
+                        </a>
+                        <!-- Anchor tag ends covering both image and caption -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div id="map"></div>
+            </div>
         </div>
 
     </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/javascript/js.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0&callback=initMap">
+</script>
 </body>
-
 </html>
