@@ -56,11 +56,6 @@ body {
     margin-top: 10px;
 }
  
-/* label {
-    padding: 5px;
-    margin: 0px 3px;
-} */
-
 body {
     overflow-x: hidden;
 }
@@ -68,6 +63,10 @@ body {
 .bottom-display {
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+.btn-display {
+    
 }
  #map {
     height: 300px;
