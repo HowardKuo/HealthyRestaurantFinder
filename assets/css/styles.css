@@ -2,11 +2,9 @@
     padding: 5px;
     margin: 0px 3px;
 }
-
 body {
     overflow-x: hidden;
 }
-
 .cuisineType {
     -webkit-appearance: none;
     -moz-appearance: none;
