@@ -15,13 +15,20 @@ body {
     text-align: center;
     text-shadow:
 		-1px -1px 0 rgb(34, 27, 27),
-		.1px -1px 0 rgb(182, 164, 164),
-		-1px 1px 0 rgb(182, 164, 164),
-		.1px 1px 0 rgb(182, 164, 164);
+		.1px -1px 0 rgb(34, 27, 27),
+		-1px 1px 0 rgb(34, 27, 27),
+		.1px 1px 0 rgb(34, 27, 27);
 }
  
 .display-4 {
     font-size: 35px;
+    text-align: center;
+    margin-top: 50px;
+
+} 
+
+.image-border {
+    background-color: white;
 }
 .panel {
     margin-top: 0px;
@@ -32,12 +39,12 @@ body {
     color: #58ACFA;
     text-shadow:
 		-.5px -.5px 0 rgb(34, 27, 27),
-		.5px -.5px 0 rgb(182, 164, 164),
-		-.5px .5px 0 rgb(182, 164, 164),
-		.5px .5px 0 rgb(182, 164, 164);
+		.5px -.5px 0 rgb(34, 27, 27),
+		-.5px .5px 0 rgb(34, 27, 27),
+		.5px .5px 0 rgb(34, 27, 27);
     font-size: 20px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
 }
  
 .bottom-display {
