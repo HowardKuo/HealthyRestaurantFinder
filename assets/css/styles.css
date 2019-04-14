@@ -1,53 +1,37 @@
-/* label {
-    padding: 5px;
-    margin: 0px 3px;
-}
 body {
-    overflow-x: hidden;
+    background-color: #F7D358;
 }
-.cuisineType {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 10px;
-    padding: 10px;
-} */
-
 .jumbotron {
     background-image: url(../images/phone3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Times New Roman", Times, serif;
-    padding: 0;
+    padding: 5px;
     height: 150px;
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    color:rgb(105, 205, 223);
+    color: #58ACFA;
     text-align: center;
     text-shadow:
-		-.5px -.5px 0 rgb(182, 164, 164),
-		.5px -.5px 0 rgb(182, 164, 164),
-		-.5px .5px 0 rgb(182, 164, 164),
-		.5px .5px 0 rgb(182, 164, 164);
-    font-size: 35px;
-    margin: 0px 0px 10px 0px;
-}
-
-.title {
-    text-align: center;
-    margin-top: 30px;
+		-1px -1px 0 rgb(34, 27, 27),
+		.1px -1px 0 rgb(182, 164, 164),
+		-1px 1px 0 rgb(182, 164, 164),
+		.1px 1px 0 rgb(182, 164, 164);
 }
  
+.display-4 {
+    font-size: 35px;
+}
 .panel {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .panel-footer {
     font-family: "Times New Roman", Times, serif;
-    color:rgb(105, 205, 223);
+    color: #58ACFA;
     text-shadow:
-		-.5px -.5px 0 rgb(182, 164, 164),
+		-.5px -.5px 0 rgb(34, 27, 27),
 		.5px -.5px 0 rgb(182, 164, 164),
 		-.5px .5px 0 rgb(182, 164, 164),
 		.5px .5px 0 rgb(182, 164, 164);
@@ -56,18 +40,23 @@ body {
     margin-top: 10px;
 }
  
-body {
-    overflow-x: hidden;
-}
-
 .bottom-display {
     margin-bottom: 20px;
     margin-top: 10px;
 }
 
-.btn-display {
-    
+.btn-secondary:hover {
+    background-color: rgb(228, 227, 177);
 }
+
+.btn-secondary {
+    border-color: rgb(34, 29, 29);
+}
+    
+.search-btn {
+    margin-top: 10px;
+}
+
  #map {
     height: 300px;
     width: 100%;
@@ -80,7 +69,7 @@ body {
  #results {
     height: 300px;
     width: 100%;
-    background-color: rgb(133, 98, 98);
+    background-color: rgb(147, 214, 226);
     border-style: solid;
     border-radius: 1px;
     border-width: 1px;
