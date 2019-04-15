@@ -1,7 +1,7 @@
 // make sure ajax call is parent of this function
 //Google Maps==============================================================================================
 //https://developers.google.com/maps/documentation/javascript/geolocation
-var map, infoWindow, currentMarker, marker, currentPos, pos, queryURL;
+var map, infoWindow, currentMarker, marker, currentPos, pos, queryURL, lat, lng;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 40.7128, lng: -74.0060 },
@@ -12,9 +12,11 @@ function initMap() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
+            lat = position.coords.latitude
+            lng = position.coords.longitude
             currentPos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                lat: lat,
+                lng: lng
             };
             infoWindow.setPosition(currentPos);
             // infoWindow.setContent('Location found.');
@@ -52,7 +54,7 @@ $("#searchButton").click(function () {
     var request = {
         type: 'restaurant',
         location: currentPos,
-        radius: 5000,
+        radius: 1609.34*10,
         keyword: '(gluten-free) AND (vegan) AND (vegetarian) AND (family)'
     };
 
@@ -72,10 +74,11 @@ $("#searchButton").click(function () {
                     title: item.name,
                     icon: 'assets/images/restaurantmarker.png'
                 });
-                let butt = pos;
-                $('#results').append('<tr><td>' + item.name + '<br>' + item.vicinity + '<br><a href="https://www.google.com/maps/search/?api=1&' + item.geometry.location.lat() + ',' + item.geometry.location.lng() + '" target="_blank">Get Directions</a></td></tr>').click(function () {
-                    map.setCenter(butt)
-                    console.log(butt);
+                let centerPos = pos;
+                var row = $('<tr><td>' + item.name + '<br>' + item.vicinity + '<br><a href="https://www.google.com/maps/dir/'+ lat + ',' + lng + '/' + item.vicinity + '" target="_blank">Get Directions</a></td></tr>');
+                $('#results').append(row);
+                row.click(function() {
+                    map.setCenter(centerPos);
                 });
             });
         }
