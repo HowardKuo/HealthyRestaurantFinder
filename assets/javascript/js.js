@@ -1,25 +1,32 @@
 // make sure ajax call is parent of this function
 //Google Maps==============================================================================================
-var map, infoWindow;
+//https://developers.google.com/maps/documentation/javascript/geolocation
+var map, infoWindow, currentMarker, marker, currentPos, pos, queryURL;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 13
+        zoom: 14
     });
     infoWindow = new google.maps.InfoWindow;
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
+            currentPos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+            infoWindow.setPosition(currentPos);
+            // infoWindow.setContent('Location found.');
+            // infoWindow.open(map);
+            map.setCenter(currentPos);
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
+            //https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+            currentMarker = new google.maps.Marker({
+                position: currentPos,
+                map: map,
+                title: 'You Are Here'
+            });
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -29,13 +36,61 @@ function initMap() {
     }
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
+function handleLocationError(browserHasGeolocation, infoWindow, currentPos) {
+    infoWindow.setPosition(currentPos);
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
 }
+
+$("#searchButton").click(function () {
+    // queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0"
+    // console.log(queryURL);
+
+    //https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceSearchRequest
+    var request = {
+        type: 'restaurant',
+        location: currentPos,
+        radius: 5000,
+        keyword: '(gluten-free) AND (vegan) AND (vegetarian) AND (family)'
+    };
+
+    //https://code.luasoftware.com/tutorials/google-maps/google-places-javascript-api-query-for-places/
+    var placeService = new google.maps.places.PlacesService(map);
+    placeService.nearbySearch(request, function (results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            results.forEach(function (item) {
+                // console.log(item);
+                pos = {
+                    lat: item.geometry.location.lat(),
+                    lng: item.geometry.location.lng()
+                };
+                marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: item.name,
+                    icon: 'assets/images/restaurantmarker.png'
+                });
+                let butt = pos;
+                $('#results').append('<tr><td>' + item.name + '<br>' + item.vicinity + '<br><a href="https://www.google.com/maps/search/?api=1&' + item.geometry.location.lat() + ',' + item.geometry.location.lng() + '" target="_blank">Get Directions</a></td></tr>').click(function () {
+                    map.setCenter(butt)
+                    console.log(butt);
+                });
+            });
+        }
+    });
+})
+
+// function logPlaceDetails() {
+//     var service = new google.maps.places.PlacesService(document.getElementById('map'));
+//     service.getDetails({
+//         placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+//     }, function (place, status) {
+//         console.log('Place details:', place);
+//     });
+// }
+
 // AJAX call for Unsplash api
 // var queryURL = "https://api.pexels.com/v1/search?query="+ accessKy +"example+query&per_page=15&page=1"
 // var accessKy = "563492ad6f9170000100000107c1b4a50d344f558eb65b51b2756c56"
@@ -69,8 +124,8 @@ function replaceFoodCategoryPhoto(category) {
 
     $.ajax(settings)
         .then(function (response) {
-            console.log(response)
-            var imgUrl = response.photos[8].src.small   
+            //console.log(response)
+            var imgUrl = response.photos[8].src.small
             var imageEl = $('img.' + category)
             imageEl.attr("src", imgUrl)
         })
@@ -106,8 +161,13 @@ function getSearchTerm(category) {
 
 
 //   });
-$("#searchButton").click(function () {
-    event.preventDefault()
-    var search = $("#input").val()
-    console.log(search);
-})
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET",
+    //     dataType: 'jsonp',
+    //     cache: false,   
+    //   }).then(function(response) {
+    //     console.log(response);
+    //   });
+
+
