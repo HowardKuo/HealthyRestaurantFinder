@@ -111,3 +111,22 @@ $("#searchButton").click(function () {
     var search = $("#input").val()
     console.log(search);
 })
+
+// This is the function that runs when the onclick of the four food images is clicked.
+function vegetarianFunction() {
+    document.getElementById("results").innerHTML = "Vegetarian";
+};
+
+function veganFunction() {
+    document.getElementById("results").innerHTML = "Vegen";
+};
+
+function glutenFreeFunction() {
+    document.getElementById("results").innerHTML = "Gluten-free";
+};
+
+function familyFunction() {
+    document.getElementById("results").innerHTML = "Family";
+};
+
+
