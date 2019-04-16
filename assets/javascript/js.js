@@ -54,7 +54,7 @@ $("#searchButton").click(function () {
     var request = {
         type: 'restaurant',
         location: currentPos,
-        radius: 1609.34*10,
+        radius: 1609.34 * 10,
         keyword: '(gluten-free) AND (vegan) AND (vegetarian) AND (family)'
     };
 
@@ -74,10 +74,11 @@ $("#searchButton").click(function () {
                     title: item.name,
                     icon: 'assets/images/restaurantmarker.png'
                 });
+                //closed scope vs global
                 let centerPos = pos;
-                var row = $('<tr><td>' + item.name + '<br>' + item.vicinity + '<br><a href="https://www.google.com/maps/dir/'+ lat + ',' + lng + '/' + item.vicinity + '" target="_blank">Get Directions</a></td></tr>');
+                var row = $('<tr><td>' + item.name + '<br>' + item.vicinity + '<br><a href="https://www.google.com/maps/dir/' + lat + ',' + lng + '/' + item.vicinity + '" target="_blank">Get Directions</a></td></tr>');
                 $('#results').append(row);
-                row.click(function() {
+                row.click(function () {
                     map.setCenter(centerPos);
                 });
             });
