@@ -165,13 +165,27 @@ function getSearchTerm(category) {
 
 
 //   });
-    // $.ajax({
-    //     url: queryURL,
-    //     method: "GET",
-    //     dataType: 'jsonp',
-    //     cache: false,   
-    //   }).then(function(response) {
-    //     console.log(response);
-    //   });
+$("#searchButton").click(function () {
+    event.preventDefault()
+    var search = $("#input").val()
+    console.log(search);
+})
+
+// This is the function that runs when the onclick of the four food images is clicked.
+function vegetarianFunction() {
+    document.getElementById("results").innerHTML = "Vegetarian";
+};
+
+function veganFunction() {
+    document.getElementById("results").innerHTML = "Vegen";
+};
+
+function glutenFreeFunction() {
+    document.getElementById("results").innerHTML = "Gluten-free";
+};
+
+function familyFunction() {
+    document.getElementById("results").innerHTML = "Family";
+};
 
 
