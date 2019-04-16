@@ -2,11 +2,20 @@
 //Google Maps==============================================================================================
 //https://developers.google.com/maps/documentation/javascript/geolocation
 var map, infoWindow, currentMarker, marker, currentPos, pos, queryURL, lat, lng;
+var activeCategories = ['vegetarian', 'vegan', 'gluten-free', 'farmers-market']
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 40.7128, lng: -74.0060 },
+        center: { lat: 32.7111966, lng: -117.1667929 },
         zoom: 14
     });
+    currentPos = { lat: 32.7111966, lng: -117.1667929 }
+    currentMarker = new google.maps.Marker({
+        position: currentPos,
+        map: map,
+        title: 'You Are Here'
+    });
+
     infoWindow = new google.maps.InfoWindow;
 
     // Try HTML5 geolocation.
@@ -46,16 +55,26 @@ function handleLocationError(browserHasGeolocation, infoWindow, currentPos) {
     infoWindow.open(map);
 }
 
+function formatPlacesRequest() {
+    let str = ''
+    activeCategories.map(function(category, index) {
+        str += index === 0 ? `(${category})` : ` AND (${category})`
+        // str += index === 0 ? '(' + category + ')' : ' AND (' + category + ')'
+    })
+    return str
+}
+
 $("#searchButton").click(function () {
     // queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0"
     // console.log(queryURL);
-
+    var requestKeyword = formatPlacesRequest()
+console.log('PLACES REQUEST KEYWORD', requestKeyword)
     //https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceSearchRequest
     var request = {
         type: 'restaurant',
         location: currentPos,
-        radius: 1609.34 * 10,
-        keyword: '(gluten-free) AND (vegan) AND (vegetarian) AND (family)'
+        radius: 1609.34 * 3,
+        keyword: requestKeyword
     };
 
     //https://code.luasoftware.com/tutorials/google-maps/google-places-javascript-api-query-for-places/
@@ -86,19 +105,11 @@ $("#searchButton").click(function () {
     });
 })
 
-// function logPlaceDetails() {
-//     var service = new google.maps.places.PlacesService(document.getElementById('map'));
-//     service.getDetails({
-//         placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-//     }, function (place, status) {
-//         console.log('Place details:', place);
-//     });
-// }
 
 // AJAX call for Unsplash api
 // var queryURL = "https://api.pexels.com/v1/search?query="+ accessKy +"example+query&per_page=15&page=1"
 // var accessKy = "563492ad6f9170000100000107c1b4a50d344f558eb65b51b2756c56"
-var foodCategories = ['vegetarian', 'vegan', 'gluten-free', 'family']
+var foodCategories = ['vegetarian', 'vegan', 'gluten-free', 'farmers-market']
 // for (var i = 0; i < foodCategories.length; i++) {
 //     replaceFoodCategoryPhoto(foodCategories[i])
 // }
@@ -129,7 +140,7 @@ function replaceFoodCategoryPhoto(category) {
     $.ajax(settings)
         .then(function (response) {
             //console.log(response)
-            var imgUrl = response.photos[8].src.small
+            var imgUrl = response.photos[3].src.small
             var imageEl = $('img.' + category)
             imageEl.attr("src", imgUrl)
         })
@@ -143,8 +154,8 @@ function getSearchTerm(category) {
             return 'vegan+meals'
         case 'gluten-free':
             return 'gluten+meals'
-        case 'family':
-            return 'food+meals'
+        case 'farmers-market':
+            return 'farmers+market'
 
         // TODO: finish this
         default:
@@ -165,27 +176,68 @@ function getSearchTerm(category) {
 
 
 //   });
-$("#searchButton").click(function () {
-    event.preventDefault()
-    var search = $("#input").val()
-    console.log(search);
-})
 
 // This is the function that runs when the onclick of the four food images is clicked.
-function vegetarianFunction() {
-    document.getElementById("results").innerHTML = "Vegetarian";
-};
+$(".toggler").on("click", function () {
+    var category = ""
+    if (this.classList.contains('vegan')) {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active')
+            removeFromArray("vegan")
+        } else {
+            this.classList.add('active')
+            activeCategories.push("vegan")
+        }
+    } else if (this.classList.contains('vegetarian')) {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active')
+            removeFromArray("vegetarian")
+        } else {
+            this.classList.add('active')
+            activeCategories.push("vegetarian")
+        }
+    } else if (this.classList.contains('gluten-free')) {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active')
+            removeFromArray("gluten-free")
+        } else {
+            this.classList.add('active')
+            activeCategories.push("gluten-free")
+        }
+    } else if (this.classList.contains('farmers-market')) {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active')
+            removeFromArray("farmers-market")
+        } else {
+            this.classList.add('active')
+            activeCategories.push("farmers-market")
+        }
 
-function veganFunction() {
-    document.getElementById("results").innerHTML = "Vegen";
-};
+    }
 
-function glutenFreeFunction() {
-    document.getElementById("results").innerHTML = "Gluten-free";
-};
+})
+function removeFromArray(item) {
+    for (var i = activeCategories.length-1; i>=0; i--) {
+        if (activeCategories[i] === item) {
+            activeCategories.splice(i, 1);
+            break;       //<-- Uncomment  if only the first term has to be removed
+        }
+    }
+}
 
-function familyFunction() {
-    document.getElementById("results").innerHTML = "Family";
-};
+//     document.getElementById("results").innerHTML = "Vegetarian";
+// };
+
+// function veganFunction() {
+//     document.getElementById("results").innerHTML = "Vegan";
+// };
+
+// function glutenFreeFunction() {
+//     document.getElementById("results").innerHTML = "Gluten-free";
+// };
+
+// function farmersFunction() {
+//     document.getElementById("results").innerHTML = "Farmers-Market";
+// };
 
 

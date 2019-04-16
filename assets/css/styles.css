@@ -30,6 +30,10 @@ body {
 .image-border {
     background-color: white;
 }
+img.active {
+    border: 5px solid red;
+    
+}
 .panel {
     margin-top: 0px;
 }
