@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                        <div class="panel panel-primary image-border">
+                    <div class="panel panel-primary image-border">
                         <a href="#" class="">
                             <div class="panel-body"><img src="" onclick="veganFunction()" class="img-responsive vegan" style="width:100%"
                                     alt="Image"></div>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                        <div class="panel panel-primary image-border">
+                    <div class="panel panel-primary image-border">
                         <a href="#" class="">
                             <div class="panel-body"><img src="" onclick="glutenFreeFunction()" class="img-responsive gluten-free" style="width:100%"
                                     alt="Image"></div>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                        <div class="panel panel-primary image-border">
+                    <div class="panel panel-primary image-border">
                         <a href="#" class="">
                             <div class="panel-body"><img src="" onclick="familyFunction()" class="img-responsive family" style="width:100%"
                                     alt="Image"></div>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="btn-display">
-                        <button type="button" class="btn btn-secondary" type="submit">Search</button>
+                        <button type="button" class="btn btn-secondary" type="submit" id="searchButton">Search</button>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,11 @@
                 <div id="map"></div>
             </div>
             <div class="col-sm-6 results-display">
-                <div id="results"></div>
+                <div>
+                    <table class='table-hover' id="results">
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -114,8 +118,7 @@
         crossorigin="anonymous"></script>
     <script src="assets/javascript/js.js"></script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0&callback=initMap&libraries=places">
         </script>
 </body>
-
 </html>
