@@ -1,8 +1,14 @@
 // make sure ajax call is parent of this function
 //Google Maps==============================================================================================
 //https://developers.google.com/maps/documentation/javascript/geolocation
+
+
+
+
 var map, infoWindow, currentMarker, marker, currentPos, pos, queryURL, lat, lng;
 var activeCategories = ['vegetarian', 'vegan', 'gluten-free', 'farmers-market']
+
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -55,14 +61,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, currentPos) {
     infoWindow.open(map);
 }
 
+
+
 function formatPlacesRequest() {
     let str = ''
     activeCategories.map(function(category, index) {
         str += index === 0 ? `(${category})` : ` AND (${category})`
-        // str += index === 0 ? '(' + category + ')' : ' AND (' + category + ')'
     })
     return str
 }
+
+
 
 $("#searchButton").click(function () {
     // queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0"
@@ -110,22 +119,13 @@ console.log('PLACES REQUEST KEYWORD', requestKeyword)
 // var queryURL = "https://api.pexels.com/v1/search?query="+ accessKy +"example+query&per_page=15&page=1"
 // var accessKy = "563492ad6f9170000100000107c1b4a50d344f558eb65b51b2756c56"
 var foodCategories = ['vegetarian', 'vegan', 'gluten-free', 'farmers-market']
-// for (var i = 0; i < foodCategories.length; i++) {
-//     replaceFoodCategoryPhoto(foodCategories[i])
-// }
-// foodCategories.forEach(function(foodCategory) {
-//     replaceFoodCategoryPhoto(foodCategory)
-// })
+
 foodCategories.map(function (foodCategory) {
     replaceFoodCategoryPhoto(foodCategory)
 })
 
 function replaceFoodCategoryPhoto(category) {
     var searchTerm = getSearchTerm(category)
-    // var typeVegan = 'vegan+dishes'
-    // var typeVegie = 'vegetarian+dishes'
-    // var typeGluton = 'gluton+free+dish'
-    // var typeFamily = 'family+food'
 
     var settings = {
         "async": true,
@@ -140,7 +140,7 @@ function replaceFoodCategoryPhoto(category) {
     $.ajax(settings)
         .then(function (response) {
             //console.log(response)
-            var imgUrl = response.photos[3].src.small
+            var imgUrl = response.photos[8].src.small
             var imageEl = $('img.' + category)
             imageEl.attr("src", imgUrl)
         })
@@ -225,19 +225,30 @@ function removeFromArray(item) {
     }
 }
 
-//     document.getElementById("results").innerHTML = "Vegetarian";
-// };
+function checkForm(form) // Submit button clicked
+  {
+    //
+    // check form input values
+    //
 
-// function veganFunction() {
-//     document.getElementById("results").innerHTML = "Vegan";
-// };
+    form.myButton.disabled = true;
+    form.myButton.value = "Please wait...";
+    return true;
+  }
 
-// function glutenFreeFunction() {
-//     document.getElementById("results").innerHTML = "Gluten-free";
-// };
+  function resetForm(form) // Reset button clicked
+  {
+    form.myButton.disabled = false;
+    form.myButton.value = "Submit";
+  }
 
-// function farmersFunction() {
-//     document.getElementById("results").innerHTML = "Farmers-Market";
-// };
+
+
+
+
+ 
+
+   
+
 
 

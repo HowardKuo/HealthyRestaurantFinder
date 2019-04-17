@@ -11,7 +11,7 @@ body {
     border-style: solid;
     border-color: black;
     border-width: 1px;
-    color: #58ACFA;
+    color: rgb(230, 243, 245);
     text-align: center;
     text-shadow:
 		-1px -1px 0 rgb(34, 27, 27),
@@ -31,7 +31,7 @@ body {
     background-color: white;
 }
 img.active {
-    border: 5px solid red;
+    border: 5px solid rgb(102, 236, 12);
     
 }
 .panel {
@@ -60,12 +60,12 @@ img.active {
     background-color: rgb(228, 227, 177);
 }
 
-.btn-secondary {
-    border-color: rgb(34, 29, 29);
-}
-    
 .search-btn {
     margin-top: 10px;
+}
+
+.btn-secondary {
+    border-color: rgb(34, 29, 29);
 }
 
  #map {
@@ -77,14 +77,12 @@ img.active {
     border-color: black;
  }
 
- #results {
-    height: 300px;
-    width: 100%;
+ .results-display {
     background-color: rgb(147, 214, 226);
-    border-style: solid;
-    border-radius: 1px;
-    border-width: 1px;
-    border-color: black;
+    display: block;
+    position: relative;
+    height: 300px;
+    overflow: auto;
  }
 
  td {
@@ -92,4 +90,6 @@ img.active {
      border-width: 1px;
      border-color: black;
      padding: 5px;
+     overflow-y: hidden;
  }
+ 
