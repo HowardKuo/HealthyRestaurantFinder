@@ -71,7 +71,10 @@ function formatPlacesRequest() {
     return str
 }
 
-
+$('.reset').on('click', function () {
+    $('.btn-secondary').attr('disabled',false);
+    $('.table-hover').empty();
+   });
 
 $("#searchButton").click(function () {
     // queryURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyD0fkNiqS5pR7EwGX8Ogau_XYce-hfD2K0"
@@ -84,7 +87,11 @@ console.log('PLACES REQUEST KEYWORD', requestKeyword)
         location: currentPos,
         radius: 1609.34 * 3,
         keyword: requestKeyword
+        
     };
+    $(event.target).attr('disabled',true);
+
+    
 
     //https://code.luasoftware.com/tutorials/google-maps/google-places-javascript-api-query-for-places/
     var placeService = new google.maps.places.PlacesService(map);
@@ -225,22 +232,7 @@ function removeFromArray(item) {
     }
 }
 
-function checkForm(form) // Submit button clicked
-  {
-    //
-    // check form input values
-    //
 
-    form.myButton.disabled = true;
-    form.myButton.value = "Please wait...";
-    return true;
-  }
-
-  function resetForm(form) // Reset button clicked
-  {
-    form.myButton.disabled = false;
-    form.myButton.value = "Submit";
-  }
 
 
 
